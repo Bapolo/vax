@@ -1,0 +1,1 @@
+import{j as e}from"./index-BgjEsQgh.js";function t(){return e.jsxs("div",{className:"w-full flex flex-col justify-center items-center",style:{height:"100vh"},children:[e.jsx("p",{className:"text-2xl m-2",children:"Carregando"}),e.jsx("div",{className:"w-10 h-10 border-5n p-9 border-gray-500 rounded-full text-transparent",children:"1"})]})}export{t as default};
