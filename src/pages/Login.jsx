@@ -24,7 +24,7 @@ function Login()
             <p>ou</p>
             <FormLogin email={ email } setEmail={ setEmail } senha={ senha } setSenha={ setSenha } erro = { erro } setErro={ setErro }/>
 
-            <p className="text-blue-700 underline" onClick={redirecionar("/cadastrar")}>Cadastrar?</p>
+            <p className="text-blue-700 underline" onClick={() => redirecionar("/cadastrar")}>Cadastrar?</p>
         </div>
     )
 }

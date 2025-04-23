@@ -46,7 +46,7 @@ function Cadastrar()
 
                 <Botao type = "button" texto ="cadastrar"  styles="bg-black text-white text-black w-75" acao={ () => cadastrarUsuario(auth, senha, email) }/>
 
-                <p className="text-blue-700 underline" onClick={redirecionar("/login")}>Login?</p>
+                <p className="text-blue-700 underline" onClick={() => redirecionar("/login")}>Login?</p>
             </form>
         </div>
     )
