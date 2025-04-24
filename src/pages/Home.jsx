@@ -2,7 +2,7 @@
 function Home()
 {
     return (
-        <div>
+        <div className="bg-white">
             <h1>Home</h1>
         </div>
     )

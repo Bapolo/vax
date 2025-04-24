@@ -3,10 +3,10 @@ import { ContextLogin } from "./ContextLogin"
 
 function ProviderLogin({children})
 {
-    const [login,setLogin] = useState()
+    const [logado,setLogado] = useState(false)
 
     return (
-        <ContextLogin.Provider value={{login,setLogin}}>
+        <ContextLogin.Provider value={{logado,setLogado}}>
             {children}
         </ContextLogin.Provider>
     )

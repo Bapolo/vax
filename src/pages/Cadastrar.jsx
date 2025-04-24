@@ -1,11 +1,12 @@
 import logo from '../imagens/vax-logo.png'
 import Input from '../componentes/Input'
-import { useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import Botao from '../componentes/Botao'
 import useRedirecionar from '../helpers/useRedirecionar'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../firebase'
 import Loader from '../componentes/Loader'
+import { ContextLogin } from '../componentes/ContextLogin'
 
 function Cadastrar()
 {
@@ -15,8 +16,14 @@ function Cadastrar()
     const [senha, setSenha] = useState("")
     const [erro, setErro] = useState("")
     const [carregar,setCarregar] = useState(false)
+    const { logado, setLogado } = useContext(ContextLogin)
 
     const redirecionar = useRedirecionar()
+
+    useEffect(() =>
+    {
+        localStorage.getItem("logadoOn") && setLogado(true)
+    }, [])
 
     async function cadastrarUsuario(auth, nome, sobrenome, senha, email)
     {
@@ -30,19 +37,24 @@ function Cadastrar()
         {
             setCarregar(true)
             const credenciaisUsuario = await createUserWithEmailAndPassword(auth, email, senha)
-            setCarregar(false)
             setNome("")
             setSobrenome("")
             setEmail("")
             setSenha("")
+            setLogado(true)
+            localStorage.setItem("logadoOn", true)
             console.log("Usuario cadastrado com sucesso: ", credenciaisUsuario.user)
         } catch (erro) {
-            console.log("Erro ao cadastrar: ", erro.message)
+            throw new Error("Erro ao cadastrar")
+            setLogado(false)
+        } finally {
+            setCarregar(false)
+            logado && redirecionar("/")
         }
     }
     
     return(
-        <div className = "container pb-10 px-4 font-light flex flex-col gap-3 m-auto justify-center items-center" style = {{height: `100vh`, width: `100vw`}}>
+        <div className = "container pb-10 px-4 font-light flex flex-col gap-3 m-auto justify-center items-center bg-white" style = {{height: `100vh`, width: `100vw`}}>
             { carregar ? (<Loader />):(
                 <>
                     <img src = {logo} onClick = { () => redirecionar("/") } alt = "Logo vax" className="object-contain w-40"/>

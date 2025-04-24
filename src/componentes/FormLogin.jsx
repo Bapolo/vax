@@ -2,9 +2,15 @@ import Botao from "./Botao"
 import { auth } from '../../firebase'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import Input from "./Input"
+import { useContext } from "react"
+import { ContextLogin } from "./ContextLogin"
+import useRedirecionar from "../helpers/useRedirecionar"
 
 function FormLogin({email, setEmail, senha, setSenha, erro, setErro, carregar, setCarregar})
 {
+    const { logado, setLogado } = useContext(ContextLogin)
+    const redirecionar = useRedirecionar()
+
     function enviar(e)
     {
         e.preventDeault()
@@ -22,14 +28,16 @@ function FormLogin({email, setEmail, senha, setSenha, erro, setErro, carregar, s
         {
             setCarregar(true)
             const response = await signInWithEmailAndPassword(auth, email, senha)
-            setCarregar(false)
             setEmail("")
             setSenha("")
-            console.log(response)
-            console.log("Login feito com sucesso!")
+            setLogado(true)
+            localStorage.setItem("logadoOn", true)
         } catch (error) {
-            setErro(error.message)
-            console.log(error.message)
+            setErro("Email ou senha iválidos!")
+            setLogado(false)
+        } finally {
+            setCarregar(false)
+            logado && redirecionar("/")
         }
     }
 

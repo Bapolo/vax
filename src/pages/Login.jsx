@@ -3,8 +3,9 @@ import Botao from '../componentes/Botao'
 import FormLogin from '../componentes/FormLogin'
 import logoGoogle from '../imagens/google.png'
 import useRedirecionar from '../helpers/useRedirecionar'
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Loader from '../componentes/Loader'
+import { ContextLogin } from '../componentes/ContextLogin'
 
 function Login()
 {
@@ -12,11 +13,16 @@ function Login()
     const [senha, setSenha] = useState("")
     const [erro, setErro] = useState("")
     const [carregar, setCarregar] = useState(false)
-
     const redirecionar = useRedirecionar()
+    const { setLogado } = useContext(ContextLogin)
+
+    useEffect(() =>
+    {
+        localStorage.getItem("logadoOn") && setLogado(true)
+    }, [])
 
     return (
-        <div className = "container pb-10 px-4 font-light flex flex-col gap-3 m-auto justify-center items-center" style = {{height: `100vh`, width: `100vw`}}>
+        <div className = "container pb-10 px-4 font-light flex flex-col gap-3 m-auto justify-center items-center bg-white" style = {{height: `100vh`, width: `100vw`}}>
             { carregar ? (<Loader />) : (
                 <>
                     <img src = {logo} onClick = { () => redirecionar("/") } alt = "Logo vax" className="object-contain w-40"/>
