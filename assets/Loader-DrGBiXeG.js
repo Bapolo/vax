@@ -1,1 +1,0 @@
-import{j as e}from"./index-Dco61vD1.js";function t(){return e.jsxs("div",{className:"w-full flex flex-col justify-center items-center",style:{height:"100vh"},children:[e.jsx("p",{className:"text-2xl m-2",children:"Carregando..."}),e.jsx("div",{className:"w-10 h-10 border-5 bg-emerald-900 p-9 border-black rounded-full text-transparent",children:"13543"})]})}export{t as default};

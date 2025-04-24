@@ -1,4 +1,4 @@
-import{j as Ft,u as Mn}from"./index-Dco61vD1.js";const No="/vax/assets/vax-logo-JpOd1M_n.png";function Do({type:n,texto:e,acao:t,styles:r}){return Ft.jsx("button",{type:n,className:`cursor-pointer py-2 px-6 border border-black rounded-md text-xl ${r}`,onClick:t,children:e})}const Un=()=>{};var lt={};/**
+import{j as Ft,u as Mn}from"./index-NonGQob0.js";const No="/vax/assets/vax-logo-JpOd1M_n.png";function Do({type:n,texto:e,acao:t,styles:r}){return Ft.jsx("button",{type:n,className:`cursor-pointer py-2 px-6 border border-black rounded-md text-xl ${r}`,onClick:t,children:e})}const Un=()=>{};var lt={};/**
  * @license
  * Copyright 2017 Google LLC
  *
